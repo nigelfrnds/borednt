@@ -9,6 +9,8 @@ services:
       - ./api:/app
     ports:
       - "3001:3001"
+    environment:
+      - MOVIES_API_KEY=${MOVIES_API_KEY}
   client:
     stdin_open: true
     build:
