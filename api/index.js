@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 const movieRoutes = require('./routes/movies');
 const tvShowRoutes = require('./routes/tv-shows');
+const videoRoutes = require('./routes/videos');
+const gameRoutes = require('./routes/games');
 
 const PORT = 3001;
 
@@ -13,5 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/api/movies', movieRoutes);
 app.use('/api/tv-shows', tvShowRoutes);
+app.use('/api/videos', videoRoutes);
+app.use('/api/games', gameRoutes);
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
