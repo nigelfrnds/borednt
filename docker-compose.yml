@@ -13,6 +13,7 @@ services:
       - MOVIES_API_KEY=${MOVIES_API_KEY}
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
   client:
     stdin_open: true
     build:
