@@ -1,0 +1,16 @@
+.main{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50px;
+}
+
+#scrollList{
+    position: relative;
+    top: -49px;
+}
+
+.nonSelected{
+    opacity: 0.4;
+}

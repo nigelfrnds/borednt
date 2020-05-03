@@ -8,6 +8,9 @@ function App() {
     <div className="App">
       <Router>
           <Route path="/" exact component={Phrase}/>
+          <a target = "_blank" href = "https://github.com/nigelfrnds/borednt" rel="noopener noreferrer">
+            <i className="fab fa-github" id = "github"></i>
+          </a>
       </Router>
     </div>
   );
