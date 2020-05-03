@@ -12,7 +12,7 @@ const checkCache = (req, res, next) => {
         
         // matched cache
         if (data != null) {
-            console.log('using cache')
+            console.log('using cache');
             // data stored as strings in redis
             const parsedData = JSON.parse(data);
 
@@ -26,7 +26,7 @@ const checkCache = (req, res, next) => {
         }
 
         // if no match
-        console.log('not in cache')
+        console.log('not in cache');
         next();
     });
 };
