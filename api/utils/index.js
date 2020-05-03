@@ -9,6 +9,16 @@ const getRandomValueFromArray = (list) => {
     return randomValue;
 }
 
+const truncateText = (length, text) => {
+    if (text.length <= length) return text;
+
+    const shortened = text.substr(0, length-1);
+    const truncated = shortened.substr(0, shortened.lastIndexOf(" "));
+    const result = truncated + "...";
+
+    return result;
+}
+
 const buildResponse = (dataType, list) => {
     const randomValue = getRandomValueFromArray(list);
     let response = {};
@@ -19,6 +29,9 @@ const buildResponse = (dataType, list) => {
             break;
         case 'tv-shows':
             response = buildTvShowResponse(randomValue);
+            break;
+        case 'videos':
+            response = buildVideoResponse(randomValue);
             break;
         case 'games': 
             response = buildGameResponse(randomValue);
@@ -56,6 +69,9 @@ const buildTvShowResponse = (tvShow) => {
     return result;
 }
 
+// nothing to build, data is formatted before its added to cache
+const buildVideoResponse = (video) => video;
+
 const buildGameResponse = (game) => {
     const { name, rating, background_image, stores} = game;
     
@@ -79,7 +95,9 @@ const buildGameResponse = (game) => {
 module.exports = {
     getRandomIndex,
     getRandomValueFromArray,
+    truncateText,
     buildResponse,
     buildMovieResponse,
+    buildVideoResponse,
     buildGameResponse 
 }
