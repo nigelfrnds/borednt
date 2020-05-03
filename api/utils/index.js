@@ -20,6 +20,9 @@ const buildResponse = (dataType, list) => {
         case 'tv-shows':
             response = buildTvShowResponse(randomValue);
             break;
+        case 'games': 
+            response = buildGameResponse(randomValue);
+            break;
         default:
             break;
     }
@@ -53,10 +56,30 @@ const buildTvShowResponse = (tvShow) => {
     return result;
 }
 
+const buildGameResponse = (game) => {
+    const { name, rating, background_image, stores} = game;
+    
+    const result = {
+        title: name,
+        img_url: background_image,
+        rating: rating,
+        stores:  stores.map(function(item){
+            const { store, url_en } = item;
+            return  { 
+            name: store.name,
+            domain: store.domain,
+            image: store.background_image,
+            url: url_en
+        }})
+    };
+
+    return result;
+}
 
 module.exports = {
     getRandomIndex,
     getRandomValueFromArray,
     buildResponse,
-    buildMovieResponse
+    buildMovieResponse,
+    buildGameResponse 
 }

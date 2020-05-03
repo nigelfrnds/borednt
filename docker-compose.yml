@@ -13,6 +13,8 @@ services:
       - MOVIES_API_KEY=${MOVIES_API_KEY}
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
+      - GAME_HOST_KEY=${GAMES_API_KEY}
+
   client:
     stdin_open: true
     build:
