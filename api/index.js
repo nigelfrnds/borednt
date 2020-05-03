@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const movieRoutes = require('./routes/movies');
+const tvShowRoutes = require('./routes/tv-shows');
 
 const PORT = 3001;
 
@@ -11,4 +12,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/movies', movieRoutes);
+app.use('/api/tv-shows', tvShowRoutes);
+
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
