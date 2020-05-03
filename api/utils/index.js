@@ -63,7 +63,14 @@ const buildGameResponse = (game) => {
         title: name,
         img_url: background_image,
         rating: rating,
-        stores:  stores.filter(({store: {name}}) =>  name == "Steam")
+        stores:  stores.map(function(item){
+            const { store, url_en } = item;
+            return  { 
+            name: store.name,
+            domain: store.domain,
+            image: store.background_image,
+            url: url_en
+        }})
     };
 
     return result;
