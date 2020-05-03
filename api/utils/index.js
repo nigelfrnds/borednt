@@ -58,11 +58,12 @@ const buildTvShowResponse = (tvShow) => {
 
 const buildGameResponse = (game) => {
     const { name, rating, background_image, stores} = game;
+    
     const result = {
         title: name,
         img_url: background_image,
         rating: rating,
-        stores: stores[1]
+        stores:  stores.filter(({store: {name}}) =>  name == "Steam")
     };
 
     return result;

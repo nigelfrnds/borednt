@@ -1,7 +1,6 @@
 const axios = require('axios');
 const { cacheResult } = require('../services/redis');
-const GAME_HOST_URL = process.env.GAME_HOST_URL,
-      GAME_HOST_KEY = process.env.GAME_HOST_URL,
+const GAME_HOST_KEY = process.env.GAME_HOST_URL,
       baseUrl = 'https://rawg-video-games-database.p.rapidapi.com/games';
 
 const fetchPopularGames = async (cacheKey) => {
@@ -11,8 +10,8 @@ const fetchPopularGames = async (cacheKey) => {
                 "url": baseUrl,
                 "headers":{
                 "content-type":"application/octet-stream",
-                "x-rapidapi-host":GAME_HOST_URL,
-                "x-rapidapi-key":GAME_HOST_KEY
+                "x-rapidapi-host": "https://rawg-video-games-database.p.rapidapi.com",
+                "x-rapidapi-key": GAME_HOST_KEY
             }
         });
         const data = apiRequest.data;
