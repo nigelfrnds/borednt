@@ -1,29 +1,5 @@
-const axios = require('axios');
 const { buildResponse } = require("../utils");
-const redisClient = require('../services/redis');
-
-const API_KEY = process.env.MOVIES_API_KEY;
-const baseUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
-
-const fetchPopularMovies = async (cacheKey) => {
-    try {
-        const url = `${baseUrl}&api_key=${API_KEY}`;
-        const apiRequest = await axios.get(url);
-
-        const data = apiRequest.data;
-        const results = data.results;
-
-        // all cached data will have [dataType, list] format
-        const resultToCache = JSON.stringify(['movies', results]);
-        // cache for 1hr
-        redisClient.setex(cacheKey, 3600, resultToCache);
-
-        return results;
-    } catch (e) {
-        console.log("Error fetching popular movies: ", e);
-        throw e;
-    }
-}
+const { fetchPopularMovies } = require('../services/movie-db');
 
 const getRandomMovie = async (req, res) => {
     try {

@@ -11,9 +11,20 @@ const getRandomValueFromArray = (list) => {
 
 const buildResponse = (dataType, list) => {
     const randomValue = getRandomValueFromArray(list);
-    if (dataType === 'movies') {
-        return buildMovieResponse(randomValue);
+    let response = {};
+
+    switch(dataType) {
+        case 'movies':
+            response = buildMovieResponse(randomValue);
+            break;
+        case 'tv-shows':
+            response = buildTvShowResponse(randomValue);
+            break;
+        default:
+            break;
     }
+
+    return response;
 }
 
 const buildMovieResponse = (movie) => {
@@ -21,7 +32,20 @@ const buildMovieResponse = (movie) => {
 
     const { title, overview, poster_path } = movie;
     const result = {
-        title: title,
+        title,
+        desc: overview,
+        img_url: `${imageBaseURL}${poster_path}`
+    };
+
+    return result;
+}
+
+const buildTvShowResponse = (tvShow) => {
+    const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
+
+    const { name, overview, poster_path } = tvShow;
+    const result = {
+        title: name,
         desc: overview,
         img_url: `${imageBaseURL}${poster_path}`
     };

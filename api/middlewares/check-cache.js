@@ -1,4 +1,4 @@
-const redisClient = require('../services/redis');
+const { redisClient } = require('../services/redis');
 const { buildResponse } = require('../utils');
 
 const checkCache = (req, res, next) => {

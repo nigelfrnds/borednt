@@ -9,4 +9,14 @@ const redisClient = redis.createClient({
     retry_strategy: () => 1000
 });
 
-module.exports = redisClient;
+const cacheResult = (cacheKey, dataType, list) => {
+    // all cached data will have [dataType, list] format
+    const resultToCache = JSON.stringify([dataType, list]);
+    // cache for 1hr
+    redisClient.setex(cacheKey, 3600, resultToCache);
+}
+
+module.exports = {
+    redisClient,
+    cacheResult
+};
