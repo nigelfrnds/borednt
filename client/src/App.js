@@ -1,18 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router , Route} from 'react-router-dom';
+import Phrase from './components/Phrase';
+import './css/App.css';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Boredn't
-          </p>
-        </header>
+          <Route path="/" exact component={Phrase}/>
       </Router>
     </div>
   );

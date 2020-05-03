@@ -1,0 +1,7 @@
+.phrase{
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.5fr;
+}
+#start{
+    padding-right: 10px;
+}
