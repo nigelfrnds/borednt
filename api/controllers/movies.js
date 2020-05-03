@@ -1,25 +1,5 @@
-const axios = require('axios');
 const { buildResponse } = require("../utils");
-const { cacheResult } = require('../services/redis');
-
-const API_KEY = process.env.MOVIES_API_KEY;
-const baseUrl = 'https://api.themoviedb.org/3/movie/popular?&language=en-US&page=1';
-
-const fetchPopularMovies = async (cacheKey) => {
-    try {
-        const url = `${baseUrl}&api_key=${API_KEY}`;
-        const apiRequest = await axios.get(url);
-
-        const data = apiRequest.data;
-        const results = data.results;
-
-        cacheResult(cacheKey, 'movies', results);
-        return results;
-    } catch (e) {
-        console.log("Error fetching popular movies: ", e);
-        throw e;
-    }
-}
+const { fetchPopularMovies } = require('../services/movie-db');
 
 const getRandomMovie = async (req, res) => {
     try {

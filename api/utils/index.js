@@ -32,7 +32,7 @@ const buildMovieResponse = (movie) => {
 
     const { title, overview, poster_path } = movie;
     const result = {
-        title: title,
+        title,
         desc: overview,
         img_url: `${imageBaseURL}${poster_path}`
     };
