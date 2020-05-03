@@ -6,7 +6,6 @@ const GAME_HOST_URL = process.env.GAME_HOST_URL,
 
 const fetchPopularGames = async (cacheKey) => {
     try {
-        const 
         const apiRequest = await axios({
                 "method":"GET",
                 "url": baseUrl,
