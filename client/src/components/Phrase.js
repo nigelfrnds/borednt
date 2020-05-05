@@ -9,7 +9,6 @@ const Phrase = props => {
         <div className = "phrase">
             <div id = "start">What Should I </div>
             <Slider className = 'slider'/>
-            <Arrows className = 'controls'/>
         </div>
     );
 }

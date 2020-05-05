@@ -1,4 +1,10 @@
 #arrows{
+    margin: 0;
+    padding-left: 15px;
     position: relative;
     top: -25px;
+}
+
+#upArrow:hover , #downArrow:hover{
+    color: gray;
 }

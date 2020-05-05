@@ -4,8 +4,6 @@ body {
   padding: 0;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: "Raleway", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
