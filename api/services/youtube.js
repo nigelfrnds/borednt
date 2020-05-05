@@ -13,7 +13,7 @@ const formatVideoData = (videos) => videos.map(video => {
 
     const result = {
         title,
-        description: truncateText(500, description),
+        desc: truncateText(500, description),
         url: `${baseWatchUrl}${id}`,
         img_url: thumbnails.high.url
     }
