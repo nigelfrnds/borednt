@@ -32,7 +32,7 @@ class Slider extends React.Component{
 
     render(){
         return(
-           <div onScroll = {this.scrollListener} id = "main">
+           <div id = "main">
                 {this.renderList()}
                 
                 
