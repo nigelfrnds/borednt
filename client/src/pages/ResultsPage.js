@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRandomMovie } from '../actions/api-actions';
+import { getRandomItem } from '../actions/api-actions';
+import { getItemTypeFromRoute } from '../utils';
 
 class ResultsPage extends Component {
     componentDidMount = async () => {
-        const { getRandomMovie } = this.props;
-        getRandomMovie();
+        const { getRandomItem, location } = this.props;
+        // type of item: movies, tv-shows, videos, etc.
+        const itemType = getItemTypeFromRoute(location.pathname);
+        getRandomItem(itemType);
     }
 
     render() {
@@ -26,12 +29,13 @@ class ResultsPage extends Component {
 
 const mapStateToProps = ({ apiReducer }) => ({
     isFetching: apiReducer.isFetching,
+    itemType: apiReducer.result.itemType,
+    result: apiReducer.result.data,
     error: apiReducer.error,
-    result: apiReducer.result
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getRandomMovie: () => dispatch(getRandomMovie())
+    getRandomItem: (itemType) => dispatch(getRandomItem(itemType))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultsPage);
