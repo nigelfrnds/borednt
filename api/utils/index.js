@@ -36,6 +36,9 @@ const buildResponse = (dataType, list) => {
         case 'games': 
             response = buildGameResponse(randomValue);
             break;
+        case 'drinks':
+            response = buildDrinkResponse(randomValue);
+            break;
         default:
             break;
     }
@@ -92,12 +95,27 @@ const buildGameResponse = (game) => {
     return result;
 }
 
+const buildDrinkResponse = (drink) => {
+    const { strDrink, strCategory, strAlcoholic, strInstruction, strDrinkThumb } = drink;
+    
+    const result = {
+        title: strDrink,
+        category: strCategory,
+        alcoholic: strAlcoholic,
+        instruction: strInstruction,
+        image: strDrinkThumb
+    };
+
+    return result;
+}
+
 module.exports = {
     getRandomIndex,
     getRandomValueFromArray,
     truncateText,
     buildResponse,
     buildMovieResponse,
-    buildVideoResponse,
-    buildGameResponse 
+    buildGameResponse,
+    buildDrinkResponse,
+    buildVideoResponse
 }

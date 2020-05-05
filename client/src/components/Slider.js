@@ -4,28 +4,54 @@ import {connnect} from 'react-redux';
 
 import '../css/Slider.css';
 
-class Slider extends React.Component{
-    state = {
-        currSlide: "slide1",
-        prevSlide: "slide4",
-        nextSlide: "slide2"
-    }
+class Slider extends React.Component {
+    constructor(props) {
+        super(props);
+     
+        this.state = {
+            currSlide: "Eat",
+            prevSlide: "Play",
+            nextSlide: "Learn"
+        };
+      }
     
+      onClickDown = () => {
+        this.setState({ prevSlide: this.state.nextSlide, nextSlide: this.state.currSlide, currSlide: this.state.prevSlide,  })
+      };
+
+      onClickUp = () => {
+        this.setState({ prevSlide: this.state.currSlide, nextSlide: this.state.prevSlide, currSlide: this.state.nextSlide,  })
+      };
+
+      onSubmit = () => {
+          console.log(this.state.currSlide)
+          return this.state.currSlide;
+      }
 
 
-    renderList(){
-        console.log(this.state.currSlide,this.state.prevSlide,this.state.nextSlide )
+    renderList() {
         return(
             <div id = 'scrollList'>
                 <div className = 'nonSelected' id = "prev">
-                    {slides[this.state.prevSlide].word}
+                    {this.state.prevSlide}
                 </div>
                 <div id = "curr">
-                    {slides[this.state.currSlide].word}
+                    {this.state.currSlide}
                 </div>
                 <div className = 'nonSelected' id = "next">
-                    {slides[this.state.nextSlide].word}                
+                    {this.state.nextSlide}                
                 </div>
+                <ul>
+                <button type="button" onClick={this.onClickUp}>
+                    Go up
+                </button>
+                <button type="button" onClick={this.onClickDown}>
+                    Go down
+                </button>
+                <button type="button" onClick={this.onSubmit}>
+                    Submit
+                </button>
+        </ul>
             </div>
         );
     }
@@ -34,38 +60,9 @@ class Slider extends React.Component{
         return(
            <div id = "main">
                 {this.renderList()}
-                
-                
            </div>
         )
     }
 }
 
 export default Slider;
-
-var slides = {
-    'slide1': {
-        id: 0,
-        word: "Watch",
-        prev: 'slide4',
-        next: 'slide2'
-    },
-    'slide2': {
-        id: 1,
-        word: "Listen To",
-        prev: 'slide1',
-        next: 'slide3'
-    },
-    'slide3': {
-        id: 2,
-        word: "Eat",
-        prev: 'slide2',
-        next: 'slide4'
-    },
-    'slide4': {
-        id: 3,
-        word: "Play",
-        prev: 'slide3',
-        next: 'slide1'
-    }
-}
