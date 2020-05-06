@@ -1,5 +1,5 @@
 const { buildResponse } = require('../utils');
-const {fetchPopularSongs} = require('../services/music')
+const {fetchPopularSongs} = require('../services/spotify')
 
 const getRandomSong = async (req, res) => {
     try {
