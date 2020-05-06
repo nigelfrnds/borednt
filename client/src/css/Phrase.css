@@ -1,16 +1,12 @@
 .phrase{
+    align-self: center;
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
 }
 #start{
     padding-right: 15px;
 }
 .controls{
     padding-left: 10px;
-    position: relative;
-    top: -90px;
-}
-.slider{
-    position: relative;
-    top: -49px;
 }

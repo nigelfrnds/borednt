@@ -1,12 +1,20 @@
-.main{
+/*.sliderWrapper{
     padding: 0;
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 50px;
+}*/
+
+#scrollWrapper{
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
 #scrollList{
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
     position: relative;
     top: -49px;
 }
