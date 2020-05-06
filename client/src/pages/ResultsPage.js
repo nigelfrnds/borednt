@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getRandomItem } from '../actions/api-actions';
 import { getItemTypeFromRoute } from '../utils';
+import ResultItem from '../components/result-item/ResultItem';
+import '../css/Result.css';
 
 class ResultsPage extends Component {
     componentDidMount = async () => {
@@ -12,15 +14,16 @@ class ResultsPage extends Component {
     }
 
     render() {
-        const { isFetching, result, error } = this.props;
+        const { isFetching, result, error, location } = this.props;
         return (
-            <div>
-                {error && <div style={{ color: 'red'}}>An error occurred.</div>}
+            <div className="result-page-container">
+                {error && <div className="result-error-msg">An error occurred.</div>}
                 {isFetching && <div>...loading</div>}
                 {result && (
-                    <div>
-                        {result.title}
-                    </div>
+                    <ResultItem
+                        item={result}
+                        itemType={getItemTypeFromRoute(location.pathname)}
+                    />
                 )}
             </div>
         );
