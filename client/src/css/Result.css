@@ -1,0 +1,52 @@
+.result-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-hero-text-container {
+    text-align: center;
+}
+
+.result-error-msg {
+    color: 'red'
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 75%;
+}
+
+.item-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+}
+
+.item-image {
+    height: 15vh;
+    background-size: contain;
+}
+
+.item-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.item-title {
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.item-description {
+    font-size: 20px;
+    text-align: justify;
+}
