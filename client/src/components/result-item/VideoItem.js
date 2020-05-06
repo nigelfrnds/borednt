@@ -14,7 +14,9 @@ const VideoItem = ({ item }) => {
                 </div>
             </div>
             <a href={item.url} target="_blank" rel="noreferrer noopener">
+            <div className = 'image-container'>
                 <img className="item-image" src={item.img_url} />
+            </div>
             </a>
         </div>
     );

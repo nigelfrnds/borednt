@@ -23,16 +23,18 @@
 .item-info {
     display: grid;
     grid-template-columns:  1fr auto;
+    
+    perspective: 600px;
     padding: 5px;
 }
 
 .image-container{
-    perspective: 600px;
+    
+    transform: rotateY(-30deg);
     padding: 20px;
 }
 
 .item-image {
-    transform: rotateY(-30deg);
     background-size: contain;
 
     max-height: 30vh;
@@ -51,6 +53,7 @@
     justify-content: flex-start;
     align-items: center;
 
+    padding-right: 30px;
     max-width: 40vw;
     max-height: auto;
 }

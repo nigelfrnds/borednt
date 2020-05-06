@@ -13,7 +13,9 @@ const TvItem = ({ item }) => {
                     {item.desc}
                 </div>
             </div>
-            <img className="item-image" src={item.img_url} />
+            <div className = 'image-container'>
+                <img className="item-image" src={item.img_url} />
+            </div>
         </div>
     );
 };
