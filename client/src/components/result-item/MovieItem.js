@@ -4,7 +4,7 @@ import '../../css/Result.css';
 const MovieItem = ({ item }) => {
     return (
         <div className="item-info">
-            <img className="item-image" src={item.img_url} />
+           
             <div className="item-text-container">
                 <div className="item-title">
                     {item.title}
@@ -12,6 +12,9 @@ const MovieItem = ({ item }) => {
                 <div className="item-description">
                     {item.desc}
                 </div>
+            </div>
+            <div className = 'image-container'>
+                <img className="item-image" src={item.img_url} />
             </div>
         </div>
     );
