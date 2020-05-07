@@ -10,13 +10,16 @@ export const getVerbFromItemType = (itemType) => {
         case "movies":
         case "tv-shows":
         case "videos":
-            verb = "watch";
+            verb = "Watch";
             break;
         case "drinks":
-            verb = "drink";
+            verb = "Drink";
             break;
         case "games":
-            verb = "play";
+            verb = "Play";
+            break;
+        case "music":
+            verb = "Listen To";
             break;
         default:
             break;

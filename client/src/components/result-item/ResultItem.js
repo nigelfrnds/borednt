@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MovieItem from './MovieItem';
 import TvItem from './TvItem';
 import VideoItem from './VideoItem';
+import MusicItem from './MusicItem';
 import { getVerbFromItemType } from '../../utils';
 import '../../css/Result.css'
 
@@ -13,7 +14,7 @@ const ResultItem = (props) => {
     return (
         <div className="item-container">
             <p className="result-hero-text-container">
-                You should {verb}&nbsp;
+                You Should {verb}&nbsp;
                 <u>
                     {item.title}
                 </u>!
@@ -21,6 +22,7 @@ const ResultItem = (props) => {
             {itemType === 'movies' && <MovieItem item={item} />}
             {itemType === 'tv-shows' && <TvItem item={item} />}
             {itemType === 'videos' && <VideoItem item={item} />}
+            {itemType === 'music' && <MusicItem item={item} />}
         </div>
     );
 }
