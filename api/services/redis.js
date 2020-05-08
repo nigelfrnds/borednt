@@ -16,6 +16,7 @@ const cacheResult = (cacheKey, dataType, list) => {
     redisClient.setex(cacheKey, 3600, resultToCache);
 }
 
+
 module.exports = {
     redisClient,
     cacheResult

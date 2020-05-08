@@ -7,15 +7,15 @@ const MusicItem = ({ item }) => {
            
             <div className="item-text-container">
                 <div className="item-title">
-                    {item.title}
+                    By {item.songArtist}
                 </div>
                 <div className="item-description">
-                    {item.albumName}
+                    Album: {item.albumName}
                 </div>
             </div>
-            {/* <div className = 'image-container'>
+            <div className = 'image-container'>
                 <img className="item-image" src={item.img_url} />
-            </div> */}
+            </div>
         </div>
     );
 };
