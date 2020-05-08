@@ -2,7 +2,7 @@ const { buildResponse } = require('../utils');
 const {fetchPopularSongs} = require('../services/spotify')
 const {getRandomValueFromArray} = require('../utils');
 
-const getPopularSong = async (req, res) => {
+const getRandomSong = async (req, res) => {
     try {
         const cacheKey = req.baseUrl;
         const popularSongs = await fetchPopularSongs(cacheKey);
@@ -15,5 +15,5 @@ const getPopularSong = async (req, res) => {
 }
 
 module.exports = {
-    getPopularSong
+    getRandomSong
 };

@@ -7,7 +7,7 @@ const MusicItem = ({ item }) => {
            
             <div className="item-text-container">
                 <div className="item-title">
-                    By {item.songArtist}
+                    <p>By {item.songArtist}</p>
                 </div>
                 <div className="item-description">
                     Album: {item.albumName}

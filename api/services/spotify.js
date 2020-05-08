@@ -1,6 +1,5 @@
 const axios = require('axios');
 const { cacheResult } = require('../services/redis');
-const FormData = require('form-data');
 
 
 const SPOTIFY_AUTH_HASH = process.env.SPOTIFY_AUTH_HASH;
@@ -11,7 +10,6 @@ const songParams = "market=ES&fields=items(track(artists(name),name,album(images
 const fetchPopularSongs = async (cacheKey) => {
     try {
         const {access_token, token_type} = await getAccessToken();
-        console.log(access_token);
         const URL = `${baseGetURL}${TOP_PLAYLIST_ID}/tracks?${songParams}`;
         const getSongsRequest = await axios.get(URL, {
             headers: {
@@ -51,7 +49,7 @@ const getAccessToken = async() => {
         })
         return apiTokenRequest.data;
     }catch(e){
-        console.log("Error fetching songs: ", e);
+        console.log("Error fetching access token: ", e);
         throw e;
     }
 }
