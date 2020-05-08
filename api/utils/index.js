@@ -39,6 +39,9 @@ const buildResponse = (dataType, list) => {
         case 'drinks':
             response = buildDrinkResponse(randomValue);
             break;
+        case 'music':
+            response = buildSongResponse(randomValue);
+            break;
         default:
             break;
     }
@@ -109,6 +112,10 @@ const buildDrinkResponse = (drink) => {
     return result;
 }
 
+const buildSongResponse = (song) => {
+    return song;
+}
+
 module.exports = {
     getRandomIndex,
     getRandomValueFromArray,
@@ -117,5 +124,6 @@ module.exports = {
     buildMovieResponse,
     buildGameResponse,
     buildDrinkResponse,
-    buildVideoResponse
+    buildVideoResponse,
+    buildSongResponse
 }

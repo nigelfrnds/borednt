@@ -6,7 +6,7 @@ import './css/App.css';
 import ResultsPage from './pages/ResultsPage';
 const WHAT_ROUTES = [
   "/what/movies", "/what/tv-shows", "/what/videos",
-  "/what/drinks", "/what/games"
+  "/what/drinks", "/what/games", "/what/music"
 ];
 
 function App() {

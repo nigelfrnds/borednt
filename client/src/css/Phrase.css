@@ -1,5 +1,6 @@
 .phrase{
     align-self: center;
+    justify-self: center;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr auto;
