@@ -1,0 +1,39 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "api",
+            "image": "nigelfrnds/borednt-api",
+            "hostname": "api",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "client",
+            "image": "nigelfrnds/borednt-client",
+            "hostname": "client",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "redis",
+            "image": "redis:latest",
+            "hostname": "redis",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "nigelfrnds/borednt-nginx",
+            "essential": true,
+            "memory": 128,
+            "links": ["api", "client"],
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ]
+        }
+    ]
+}
