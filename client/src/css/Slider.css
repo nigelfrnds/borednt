@@ -34,3 +34,17 @@
 	-ms-user-select: none; 
 	user-select: none; 
 }
+
+@media (max-width: 699px){
+	#scrollWrapper{
+		display: flex;
+	}
+	.nonSelected{
+		display: none;
+	}
+	#go{
+		position: absolute;
+		float: left;
+		padding-left: none;
+	}
+}

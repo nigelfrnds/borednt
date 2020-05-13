@@ -25,6 +25,10 @@ class Arrows extends React.Component {
 				<div>
 					<i className="fas fa-chevron-down" id = "downArrow" onClick ={(event) => this.clickUp(event)}></i>
 				</div>
+				<div className = "mobile-arrows">
+					<i className="fas fa-arrow-left" id = "leftArrow" onClick ={(event) => this.clickDown(event)}></i>
+					<i className="fas fa-arrow-right" id = "rightArrow" onClick ={(event) => this.clickUp(event)}></i>
+				</div>
 			</div>
 		);
 	}
