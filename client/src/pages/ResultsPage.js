@@ -15,11 +15,12 @@ class ResultsPage extends Component {
 
     render() {
         const { isFetching, result, error, location } = this.props;
+        const shouldRenderResult = !isFetching && result;
         return (
             <div className="result-page-container">
                 {error && <div className="result-error-msg">An error occurred.</div>}
                 {isFetching && <div>...loading</div>}
-                {result && (
+                {shouldRenderResult && (
                     <ResultItem
                         item={result}
                         itemType={getItemTypeFromRoute(location.pathname)}
