@@ -1,5 +1,11 @@
 body {
-  background: linear-gradient(to bottom right, #5a75b0, #f0f8ff) 100% no-repeat;
+  background: linear-gradient(to bottom right, #246655, #ffffff) no-repeat;
+  background-size: 100% 100%;
+  -webkit-animation: GradientEase 3s ease infinite;
+  -moz-animation: GradientEase 3s ease infinite;
+  animation: GradientEase 3s ease infinite;
+
+
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -9,3 +15,20 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+@-webkit-keyframes GradientEase {
+  0%{background-position:0% 90%}
+  50%{background-position:100% 10%}
+  100%{background-position:0% 90%}
+}
+@-moz-keyframes GradientEase {
+  0%{background-position:0% 90%}
+  50%{background-position:100% 10%}
+  100%{background-position:0% 90%}
+}
+@keyframes GradientEase {
+  0%{background-position:0% 90%}
+  50%{background-position:100% 10%}
+  100%{background-position:0% 90%}
+}
+ 

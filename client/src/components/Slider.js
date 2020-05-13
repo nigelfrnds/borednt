@@ -1,5 +1,5 @@
 import React from "react";
-import { connnect } from "react-redux";
+import { Link } from "react-router-dom";
 import Arrows from "./Arrows";
 
 import "../css/Slider.css";
@@ -13,6 +13,14 @@ class Slider extends React.Component {
 			prev: SLIDES[SLIDES[1].prev],
 			next: SLIDES[SLIDES[1].next]
 		};
+	}
+
+	componentDidMount(){
+		this.setState({
+			curr: SLIDES[1],
+			prev: SLIDES[SLIDES[1].prev],
+			next: SLIDES[SLIDES[1].next]
+		})
 	}
 
 	onClickDown = () => {
@@ -46,7 +54,23 @@ class Slider extends React.Component {
     renderWord(object){
         return object.word
     }
-
+	getLink(word){
+		if(word === 'Watch'){
+			let num = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+			if(num === 1){return 'tv-shows'}
+			if(num === 2){return 'videos'}
+			if(num === 3){return 'movies'}
+		}
+		if(word === "Listen To"){
+			return 'music'
+		}
+		if(word === "Drink"){
+			return 'drinks'
+		}
+		if(word === "Play"){
+			return 'games'
+		}
+	}
 	renderList() {
 		return (
 			<div id="scrollWrapper">
@@ -62,6 +86,11 @@ class Slider extends React.Component {
 					</div>
 				</div>
 				<Arrows onClickUp={this.onClickUp} onClickDown={this.onClickDown} />
+				<div id = "go">
+					<Link to={`/what/${this.getLink(this.state.curr.word)}`}>
+						<i className="fas fa-arrow-right" id = "goArrow"></i>
+					</Link>
+				</div>
 			</div>
 		);
 	}
@@ -74,27 +103,22 @@ class Slider extends React.Component {
 var SLIDES = {
 	1: {
 		next: 2,
-		prev: 5,
-		word: "Eat",
+		prev: 4,
+		word: "Watch",
 	},
 	2: {
 		next: 3,
 		prev: 1,
-		word: "Watch",
+		word: "Listen To",
 	},
 	3: {
 		next: 4,
 		prev: 2,
-		word: "Listen To",
-	},
-	4: {
-		next: 5,
-		prev: 3,
 		word: "Play",
 	},
-	5: {
+	4: {
 		next: 1,
-		prev: 4,
+		prev: 3,
 		word: "Drink",
 	},
 };
