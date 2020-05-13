@@ -2,7 +2,6 @@ import React from 'react';
 
 import '../css/Phrase.css';
 import Slider from './Slider';
-import Arrows from './Arrows';
 
 const Phrase = props => {
     return (

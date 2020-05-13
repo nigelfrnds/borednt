@@ -5,6 +5,12 @@
     top: -25px;
 }
 
-#upArrow:hover , #downArrow:hover{
+#go{
+    margin: 0;
+    padding-left: 40px;
+}
+
+#upArrow:hover , #downArrow:hover, #goArrow:hover{
     color: gray;
 }
+

@@ -6,21 +6,31 @@
     height: 50px;
 }*/
 
-#scrollWrapper{
-    display: grid;
-    grid-template-columns: 1fr auto;
+#scrollWrapper {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
 }
 
-#scrollList{
-    padding: 0;
-    margin: 0;
-    min-width: 200px;
-    max-height: 150px;
-    overflow: hidden;
-    position: relative;
-    top: -49px;
+#scrollList {
+	overflow: auto;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+	position: relative;
+	top: -49px;
 }
 
-.nonSelected{
-    opacity: 0.4;
+.nonSelected {
+	opacity: 0.4;
+}
+
+.invis {
+	opacity: 0.2;
+	/* display: none; */
+
+
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
 }
