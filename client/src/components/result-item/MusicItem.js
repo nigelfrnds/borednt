@@ -4,10 +4,9 @@ import '../../css/Result.css';
 const MusicItem = ({ item }) => {
     return (
         <div className="item-info">
-           
             <div className="item-text-container">
                 <div className="item-title">
-                    <p>By {item.songArtist}</p>
+                    By {item.songArtist}
                 </div>
                 <div className="item-description">
                     Album: {item.albumName}

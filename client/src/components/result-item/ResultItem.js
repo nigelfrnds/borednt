@@ -13,10 +13,10 @@ const ResultItem = (props) => {
 
 	return (
 			<div className="item-container">
-				<p className="result-hero-text-container">
+				<div className="result-hero-text-container">
 					You Should {verb}&nbsp;
-					{item.title}!
-				</p>
+					<u>{item.title}</u>!
+				</div>
 				{itemType === "movies" && <MovieItem item={item} />}
 				{itemType === "tv-shows" && <TvItem item={item} />}
 				{itemType === "videos" && <VideoItem item={item} />}
