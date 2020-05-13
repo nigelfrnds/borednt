@@ -2,12 +2,48 @@
     align-self: center;
     justify-self: center;
     margin: auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
 }
 #start{
     padding-right: 15px;
 }
 .controls{
     padding-left: 10px;
+}
+p{
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+@media (min-width: 700px){
+   .phrase{
+        display: grid;
+        grid-template-columns: 1fr auto;
+   }
+}
+
+@media (max-width: 699px){
+    .phrase{
+        display: grid;
+        grid-template-rows: 1fr, auto;
+    }
+    #start{
+        padding-bottom: 50px;
+    }
+    
+    #start-words{
+        display: table-caption;
+    }
+}
+
+@media (max-width: 400px){
+    .phrase{
+        display: grid;
+        grid-template-rows: 1fr, auto;
+    }
+    #start{
+        padding-bottom: 50px;
+    }
+    #start-words{
+        display: table-caption;
+    }
 }

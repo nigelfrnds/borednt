@@ -14,3 +14,20 @@
     color: gray;
 }
 
+@media (max-width: 450px){
+    #go{
+        padding-left: 20px;
+    }
+    #arrow{
+        padding-left: 5px;
+    }
+}
+
+@media (max-width: 324px){
+    #go{
+        padding-left: 20px;
+    }
+    #arrow{
+        padding-left: 5px;
+    }
+}

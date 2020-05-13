@@ -6,7 +6,7 @@ import Slider from './Slider';
 const Phrase = props => {
     return (
         <div className = "phrase">
-            <div id = "start">What Should I </div>
+            <div id = "start"><p id="start-words">What Should I</p> </div>
             <Slider className = 'slider'/>
         </div>
     );
