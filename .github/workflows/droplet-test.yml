@@ -53,5 +53,12 @@ jobs:
         CACHE_TTL: 3600
       run: node ./genTemplate.js
 
+    - name: Setup doctl
+      uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
     - name: Send to droplet
-      run: echo ${{ steps.gen-template.outputs.template }}
+      run: |
+          doctl compute ssh ${{ secrets.DROPLET_NAME }}
+          ls -l
