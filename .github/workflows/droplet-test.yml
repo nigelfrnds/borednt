@@ -23,15 +23,15 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a set of commands using the runners shell
-    - name: Log into Docker
-      run: |
-        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USER }}" --password-stdin
-        docker build -t nigelfrnds/borednt-api ./api
-        docker build -t nigelfrnds/borednt-client ./client
-        docker build -t nigelfrnds/borednt-nginx ./nginx
-        docker push nigelfrnds/borednt-api
-        docker push nigelfrnds/borednt-client
-        docker push nigelfrnds/borednt-nginx
+    # - name: Log into Docker
+    #   run: |
+    #     echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USER }}" --password-stdin
+    #     docker build -t nigelfrnds/borednt-api ./api
+    #     docker build -t nigelfrnds/borednt-client ./client
+    #     docker build -t nigelfrnds/borednt-nginx ./nginx
+    #     docker push nigelfrnds/borednt-api
+    #     docker push nigelfrnds/borednt-client
+    #     docker push nigelfrnds/borednt-nginx
 
     - name: Setup node action ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -52,6 +52,6 @@ jobs:
         SPOTIFY_AUTH_HASH: ${{ secrets.SPOTIFY_AUTH_HASH }}
         CACHE_TTL: 3600
       run: node ./genTemplate.js
-      
+
     - name: Send to droplet
-      run: echo ${{ steps.gen-template.outputs.image }}
+      run: echo ${{ steps.gen-template.outputs.template }}
