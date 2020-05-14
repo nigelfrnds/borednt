@@ -1,0 +1,82 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+#   pull_request:
+#     branches: [ deploy/droplet ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a set of commands using the runners shell
+    - name: Log into Docker and push images
+      run: |
+        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USER }}" --password-stdin
+        docker build -t nigelfrnds/borednt-api ./api
+        docker build -t nigelfrnds/borednt-client ./client
+        docker build -t nigelfrnds/borednt-nginx ./nginx
+        
+        docker push nigelfrnds/borednt-api
+        docker push nigelfrnds/borednt-client
+        docker push nigelfrnds/borednt-nginx
+    
+    # Setup Node actions
+    - name: Setup node action ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    # Generate docker-compose for production
+    - name: Generate deployment.yml
+      env:
+        API_IMAGE: nigelfrnds/borednt-api
+        CLIENT_IMAGE: nigelfrnds/borednt-client
+        NGINX_IMAGE: nigelfrnds/borednt-nginx
+        MOVIES_API_KEY: ${{ secrets.MOVIES_API_KEY }}
+        REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        REDIS_PORT: ${{ secrets.REDIS_PORT }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        GAME_API_KEY: ${{ secrets.GAME_API_KEY }}
+        SPOTIFY_AUTH_HASH: ${{ secrets.SPOTIFY_AUTH_HASH }}
+        CACHE_TTL: 3600
+      run: node ./deploy/genTemplate.js
+    
+    # Setup SCP actions and copy deployment files
+    - name: Setup scp actions and copy template
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DROPLET_HOST }}
+        username: ${{ secrets.DROPLET_USER }}
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        source: "./deploy/start.sh, ./deployment.yml,"
+        target: "app/deploy"
+        strip_components: 1
+      
+    # Setup SSH actions and start containers
+    - name: "Start docker app"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DROPLET_HOST }}
+        username: ${{ secrets.DROPLET_USER }}
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        script: |
+          ls -l
+          cd app/deploy
+          mv deploy/start.sh .
+          rm -r deploy
+          chmod +x start.sh
+          ./start.sh
