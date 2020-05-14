@@ -32,11 +32,12 @@ jobs:
         docker push nigelfrnds/borednt-api
         docker push nigelfrnds/borednt-client
         docker push nigelfrnds/borednt-nginx
-    - name: Generate deployment.yml
-      id: gen-template
+    - name: Setup node action ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      name: Generate deployment.yml
+      id: gen-template
       env:
         API_IMAGE: nigelfrnds/borednt-api
         CLIENT_IMAGE: nigelfrnds/borednt-client
