@@ -77,4 +77,5 @@ jobs:
           cd app/deploy
           mv deploy/start.sh .
           rm -r deploy
+          chmod +x start.sh
           ./start.sh
