@@ -60,6 +60,6 @@ jobs:
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
         source: "template.yml"
-        target: "deployment.yml"
+        target: "/app/deployment.yml"
         
 
