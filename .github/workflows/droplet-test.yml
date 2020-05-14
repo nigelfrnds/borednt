@@ -32,3 +32,22 @@ jobs:
         docker push nigelfrnds/borednt-api
         docker push nigelfrnds/borednt-client
         docker push nigelfrnds/borednt-nginx
+    - name: Generate deployment.yml
+      id: gen-template
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+      env:
+        API_IMAGE: nigelfrnds/borednt-api
+        CLIENT_IMAGE: nigelfrnds/borednt-client
+        NGINX_IMAGE: nigelfrnds/borednt-nginx
+        MOVIES_API_KEY: ${{ secrets.MOVIES_API_KEY }}
+        REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        REDIS_PORT: ${{ secrets.REDIS_PORT }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        GAME_API_KEY: ${{ secrets.GAME_API_KEY }}
+        SPOTIFY_AUTH_HASH: ${{ secrets.SPOTIFY_AUTH_HASH }}
+        CACHE_TTL: 3600
+      run: node ./genTemplate.js
+    - name: Send to droplet
+      run: echo ${{ steps.gen-template.outputs.image }}
