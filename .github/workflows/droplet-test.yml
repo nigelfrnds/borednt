@@ -61,7 +61,7 @@ jobs:
         host: ${{ secrets.DROPLET_HOST }}
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: "./deployment.yml, ./deploy/start.sh"
+        source: "./deploy/start.sh, ./deployment.yml,"
         target: "app"
         strip_components: 1
       
