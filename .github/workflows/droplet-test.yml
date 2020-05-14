@@ -32,11 +32,13 @@ jobs:
         docker push nigelfrnds/borednt-api
         docker push nigelfrnds/borednt-client
         docker push nigelfrnds/borednt-nginx
+
     - name: Setup node action ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-      name: Generate deployment.yml
+
+    - name: Generate deployment.yml
       id: gen-template
       env:
         API_IMAGE: nigelfrnds/borednt-api
@@ -50,5 +52,6 @@ jobs:
         SPOTIFY_AUTH_HASH: ${{ secrets.SPOTIFY_AUTH_HASH }}
         CACHE_TTL: 3600
       run: node ./genTemplate.js
+      
     - name: Send to droplet
       run: echo ${{ steps.gen-template.outputs.image }}
