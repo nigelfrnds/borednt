@@ -67,10 +67,10 @@ jobs:
         host: ${{ secrets.DROPLET_HOST }}
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
-      script: |
-        ls -l
-        cd app
-        docker-compose -f deployment.yml up --build -d
+        script: |
+          ls -l
+          cd app
+          docker-compose -f deployment.yml up --build -d
 
         
 
