@@ -1,4 +1,6 @@
 .App {
+  background: linear-gradient(to bottom right, #246655, #ffffff) no-repeat;
+  background-size: 100% 100%;
   margin: 0;
   padding: 0;
   color: white;
@@ -24,6 +26,9 @@
   bottom: 0;
   left: 0;
   margin: 10px;
+  
+  max-width: 5vw;
+  max-height: auto;
 }
 
 a:link,
