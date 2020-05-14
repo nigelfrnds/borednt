@@ -63,7 +63,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         source: "./deploy/start.sh, ./deployment.yml,"
         target: "app/deploy"
-        strip_components: 2
+        strip_components: 1
       
     # Setup SSH actions and start containers
     - name: "Start docker app"
