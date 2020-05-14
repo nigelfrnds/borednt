@@ -16,8 +16,6 @@ version: '3'
 services:
   api:
     image: ${API_IMAGE}
-    ports:
-      - "3001:3001"
     environment:
       - MOVIES_API_KEY=${MOVIES_API_KEY}
       - REDIS_HOST=${REDIS_HOST}
@@ -28,8 +26,6 @@ services:
       - CACHE_TTL=${CACHE_TTL}
   client:
     image: ${CLIENT_IMAGE}
-    ports:
-      - "3000:3000"
   nginx:
     restart: always
     image: ${NGINX_IMAGE}
