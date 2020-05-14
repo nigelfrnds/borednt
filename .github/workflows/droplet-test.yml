@@ -53,15 +53,13 @@ jobs:
         CACHE_TTL: 3600
       run: node ./genTemplate.js
 
-    - name: Setup ssh remote actions
-      uses: appleboy/ssh-action@master
+    - name: Setup scp actions and copy template
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.DROPLET_HOST }}
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
-        script: |
-          ls -l
-          cat template.yml > deployment.yml
-          docker-compose -f deployment.yml up -d --build
+        source: "template.yml"
+        target: "deployment.yml"
         
 
