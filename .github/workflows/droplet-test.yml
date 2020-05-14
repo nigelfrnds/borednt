@@ -60,8 +60,8 @@ jobs:
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
-          ls -al
-          echo ${{ steps.gen-template.outputs.template }} > deployment.yml
+          ls -l
+          cat template.yml > deployment.yml
           docker-compose -f deployment.yml up -d --build
         
 

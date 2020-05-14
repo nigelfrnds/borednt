@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const API_IMAGE = process.env.API_IMAGE;
 const MOVIES_API_KEY = process.env.MOVIES_API_KEY;
 const REDIS_HOST = process.env.REDIS_HOST;
@@ -13,7 +15,7 @@ const template = `
 version: '3'
 services:
   api:
-    image: ${GAME_API_KEY}
+    image: ${API_IMAGE}
     ports:
       - "3001:3001"
     environment:
@@ -40,4 +42,4 @@ services:
     image: 'redis:latest'
 `;
 
-console.log(`::set-output name=template::${template}`);
+fs.writeSync("template.yml", template);
