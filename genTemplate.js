@@ -42,4 +42,4 @@ services:
     image: 'redis:latest'
 `;
 
-fs.writeFileSync("template.yml", template);
+fs.writeFileSync("deployment.yml", template);
