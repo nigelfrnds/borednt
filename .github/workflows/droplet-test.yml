@@ -74,5 +74,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           ls -l
-          cd app
+          cd app/deploy
+          mv deploy/start.sh .
+          rm -r deploy
           ./start.sh
