@@ -88,7 +88,7 @@ class Slider extends React.Component {
 				<Arrows onClickUp={this.onClickUp} onClickDown={this.onClickDown} />
 				<div id = "go">
 					<Link to={`/what/${this.getLink(this.state.curr.word)}`}>
-						<i className="fas fa-arrow-right" id = "goArrow"></i>
+						GO
 					</Link>
 				</div>
 			</div>

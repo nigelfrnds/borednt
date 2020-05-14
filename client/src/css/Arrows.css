@@ -10,24 +10,30 @@
     padding-left: 40px;
 }
 
-#upArrow:hover , #downArrow:hover, #goArrow:hover{
+#upArrow:hover , #downArrow:hover, #go:hover, #leftArrow:hover, #rightArrow:hover{
     color: gray;
 }
 
-@media (max-width: 450px){
-    #go{
-        padding-left: 20px;
-    }
-    #arrow{
-        padding-left: 5px;
-    }
+.mobile-arrows{
+    display: none;
 }
 
-@media (max-width: 324px){
+
+@media (max-width: 450px){
     #go{
-        padding-left: 20px;
+        padding-left: 0;
     }
-    #arrow{
-        padding-left: 5px;
+    #arrows{
+        top: -49px;
+        right: 45px;
+    }
+    #upArrow, #downArrow{
+        display: none;
+    }
+    .mobile-arrows{
+        display: inline;
+    }
+    #leftArrow{
+        padding-right: 5px;
     }
 }
