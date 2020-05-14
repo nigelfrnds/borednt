@@ -9,7 +9,7 @@ const GAME_API_KEY = process.env.GAME_API_KEY;
 const SPOTIFY_AUTH_HASH = process.env.SPOTIFY_AUTH_HASH;
 const CACHE_TTL = process.env.CACHE_TTL;
 const CLIENT_IMAGE = process.env.CLIENT_IMAGE;
-const NGINX_IMAGE = process.env.CACHE_TTL;
+const NGINX_IMAGE = process.env.NGINX_IMAGE;
 
 const template = `
 version: '3'
