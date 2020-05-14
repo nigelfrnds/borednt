@@ -53,12 +53,13 @@ jobs:
         CACHE_TTL: 3600
       run: node ./genTemplate.js
 
-    - name: Setup doctl
-      uses: digitalocean/action-doctl@v2
+    - name: Setup ssh remote actions
+      uses: appleboy/ssh-action@master
       with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        host: ${{ secrets.DROPLET_HOST }}
+        username: ${{ secrets.DROPLET_USER }}
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        script: |
+          ls -al
+        
 
-    - name: Send to droplet
-      run: |
-          doctl compute ssh ${{ secrets.DROPLET_NAME }}
-          ls -l
