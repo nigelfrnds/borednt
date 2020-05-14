@@ -61,7 +61,7 @@ jobs:
         host: ${{ secrets.DROPLET_HOST }}
         username: ${{ secrets.DROPLET_USER }}
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: "./deploy/deployment.yml, ./deploy/start.sh"
+        source: "/deploy/deployment.yml,/deploy/start.sh"
         target: "app"
       
     # Setup SSH actions and start containers
