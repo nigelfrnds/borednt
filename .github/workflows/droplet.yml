@@ -16,8 +16,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      GIT_SHA: ${{ github.sha }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,17 +26,17 @@ jobs:
     - name: Log into Docker and push images
       run: |
         echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USER }}" --password-stdin
-        docker build -t nigelfrnds/borednt-api:latest -t nigelfrnds/borednt-api:$GIT_SHA ./api
-        docker build -t nigelfrnds/borednt-client:latest -t nigelfrnds/borednt-client:$GIT_SHA ./client
-        docker build -t nigelfrnds/borednt-nginx:latest -t nigelfrnds/borednt-nginx:$GIT_SHA ./nginx
+        docker build -t nigelfrnds/borednt-api:latest -t nigelfrnds/borednt-api:${{ github.sha }} ./api
+        docker build -t nigelfrnds/borednt-client:latest -t nigelfrnds/borednt-client:${{ github.sha }} ./client
+        docker build -t nigelfrnds/borednt-nginx:latest -t nigelfrnds/borednt-nginx:${{ github.sha }} ./nginx
         
         docker push nigelfrnds/borednt-api:latest
         docker push nigelfrnds/borednt-client:latest
         docker push nigelfrnds/borednt-nginx:latest
 
-        docker push nigelfrnds/borednt-api:$GIT_SHA
-        docker push nigelfrnds/borednt-client:$GIT_SHA
-        docker push nigelfrnds/borednt-nginx:$GIT_SHA
+        docker push nigelfrnds/borednt-api:${{ github.sha }}
+        docker push nigelfrnds/borednt-client:${{ github.sha }}
+        docker push nigelfrnds/borednt-nginx:${{ github.sha }}
     
     # Setup Node actions
     - name: Setup node action ${{ matrix.node-version }}
@@ -49,9 +47,9 @@ jobs:
     # Generate docker-compose for production
     - name: Generate deployment.yml
       env:
-        API_IMAGE: nigelfrnds/borednt-api:$GIT_SHA
-        CLIENT_IMAGE: nigelfrnds/borednt-client:$GIT_SHA
-        NGINX_IMAGE: nigelfrnds/borednt-nginx:$GIT_SHA
+        API_IMAGE: nigelfrnds/borednt-api:${{ github.sha }}
+        CLIENT_IMAGE: nigelfrnds/borednt-client:${{ github.sha }}
+        NGINX_IMAGE: nigelfrnds/borednt-nginx:${{ github.sha }}
         MOVIES_API_KEY: ${{ secrets.MOVIES_API_KEY }}
         REDIS_HOST: ${{ secrets.REDIS_HOST }}
         REDIS_PORT: ${{ secrets.REDIS_PORT }}
