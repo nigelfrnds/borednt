@@ -10,6 +10,11 @@ const GameItem = ({ item }) => {
                     {item.desc}
                     <Rate allowHalf defaultValue={item.rating} />
                 </div>
+                <div className="item-stores">
+                {item.stores.map(store => (
+                        <a key={store.name} href={store.url}><br/>{store.name}</a>
+                    ))}
+                </div>
             </div>
             <div className = 'image-container'>
                 <img className="item-image" src={item.img_url} />

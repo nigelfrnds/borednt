@@ -80,6 +80,10 @@
     text-overflow: ellipsis;
 }
 
+.item-stores {
+    font-size: 15px;
+}
+
 /* Iphone X */
 @media screen and (max-width: 700px) {
     .result-hero-text-container {
