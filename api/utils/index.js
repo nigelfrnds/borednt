@@ -104,9 +104,9 @@ const buildDrinkResponse = (drink) => {
     const result = {
         title: strDrink,
         category: strCategory,
-        alcoholic: strAlcoholic,
+        type: strAlcoholic,
         instruction: strInstruction,
-        image: strDrinkThumb
+        img_url: strDrinkThumb
     };
 
     return result;

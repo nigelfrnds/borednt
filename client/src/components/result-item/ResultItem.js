@@ -5,6 +5,7 @@ import TvItem from "./TvItem";
 import VideoItem from "./VideoItem";
 import MusicItem from "./MusicItem";
 import GameItem from "./GameItem";
+import DrinkItem from './DrinkItem';
 import { getVerbFromItemType } from "../../utils";
 import "../../css/Result.css";
 
@@ -24,6 +25,7 @@ const ResultItem = (props) => {
 				{itemType === "videos" && <VideoItem item={item} />}
 				{itemType === "music" && <MusicItem item={item} />}
 				{itemType === "games" && <GameItem item={item} />}
+				{itemType === "drinks" && <DrinkItem item={item} />}
 			</div>
 	);
 };
