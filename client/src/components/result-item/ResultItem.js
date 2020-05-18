@@ -14,10 +14,12 @@ const ResultItem = (props) => {
 	const { item, itemType } = props;
 	const verb = getVerbFromItemType(itemType);
 
+	const pronoun = itemType === 'drinks' ? ' Some': '';
+
 	return (
 			<div className="item-container">
 				<div className="result-hero-text-container">
-					You Should {verb}&nbsp;
+					You Should {verb}{pronoun}&nbsp;
 					<u>{item.title}</u>!
 				</div>
 				{itemType === "movies" && <MovieItem item={item} />}
