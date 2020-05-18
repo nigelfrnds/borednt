@@ -1,7 +1,8 @@
 import {
     API_FETCH,
     API_FETCH_SUCCESS,
-    API_FETCH_FAIL
+    API_FETCH_FAIL,
+    CLEAR_RESULT
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -48,6 +49,15 @@ export default function(state=INITIAL_STATE, action) {
                 result: {
                     ...state.result,
                     itemType: action.itemType
+                }
+            };
+        case CLEAR_RESULT:
+            return {
+                ...state,
+                result: {
+                    ...state.result,
+                    itemType: '',
+                    data: null
                 }
             };
         default:

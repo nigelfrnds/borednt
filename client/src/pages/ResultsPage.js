@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRandomItem } from '../actions/api-actions';
+import { getRandomItem, clearResult } from '../actions/api-actions';
 import { getItemTypeFromRoute } from '../utils';
 import ResultItem from '../components/result-item/ResultItem';
 import '../css/Result.css';
@@ -11,6 +11,11 @@ class ResultsPage extends Component {
         // type of item: movies, tv-shows, videos, etc.
         const itemType = getItemTypeFromRoute(location.pathname);
         getRandomItem(itemType);
+    }
+
+    componentWillUnmount() {
+        const { clearResult } = this.props;
+        clearResult();
     }
 
     render() {
@@ -39,7 +44,8 @@ const mapStateToProps = ({ apiReducer }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getRandomItem: (itemType) => dispatch(getRandomItem(itemType))
+    getRandomItem: (itemType) => dispatch(getRandomItem(itemType)),
+    clearResult: () => dispatch(clearResult())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultsPage);
