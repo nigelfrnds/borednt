@@ -7,12 +7,19 @@ const GameItem = ({ item }) => {
         <div className="item-info">
             <div className="item-text-container">
                 <div className="item-description">
-                    {item.desc}
-                    <Rate allowHalf defaultValue={item.rating} />
+                    <Rate allowHalf defaultValue={item.rating} disabled />
                 </div>
                 <div className="item-stores">
-                {item.stores.map(store => (
-                        <a key={store.name} href={store.url}><br/>{store.name}</a>
+                    <div style={{ fontSize: '20px' }}>Available On:</div>
+                    {item.stores.map(store => (
+                        <a 
+                            key={store.name}
+                            href={store.url}
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            {store.name}<br/>
+                        </a>
                     ))}
                 </div>
             </div>
