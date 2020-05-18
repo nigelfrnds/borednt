@@ -1,5 +1,5 @@
 
-
+@import '~antd/dist/antd.css';
 .result-page-container {
     height: 100vh;
     width: 100vw;
@@ -78,6 +78,10 @@
     padding: 10px;
     font-size: 20px;
     text-overflow: ellipsis;
+}
+
+.item-stores {
+    font-size: 15px;
 }
 
 /* Iphone X */
