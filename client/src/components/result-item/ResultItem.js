@@ -14,7 +14,13 @@ const ResultItem = (props) => {
 	const { item, itemType } = props;
 	const verb = getVerbFromItemType(itemType);
 
-	const pronoun = itemType === 'drinks' ? ' Some': '';
+	const getPronoun = (itemType) => {
+		if (itemType === 'drinks' || itemType === 'games') {
+			return ' Some';
+		} 
+		return '';
+	}
+	const pronoun = getPronoun(itemType);
 
 	return (
 			<div className="item-container">
